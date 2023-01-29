@@ -1,6 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
+import AddShare from './screens/AddShare';
 import Auth from './screens/Auth';
 import Home from './screens/Home';
 import Splash from './screens/Splash';
@@ -16,6 +17,7 @@ export default function App() {
             />
             <Stack.Screen name="Authentication" component={Auth} />
             <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen name='Addshare' component={AddShare} />
         </Stack.Navigator>
         {/* navigate to auth screen */}
     </NavigationContainer>

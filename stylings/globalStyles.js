@@ -1,6 +1,9 @@
-export const glob = {
+import { StyleSheet } from 'react-native';
+
+export const glob = StyleSheet.create({
     screens: {
         flex: 1,
+        display: 'flex',
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
@@ -52,4 +55,4 @@ export const glob = {
     spinner: {
         color: "#005DFF"
     },
-}
+})

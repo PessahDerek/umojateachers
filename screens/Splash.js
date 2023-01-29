@@ -15,7 +15,7 @@ export default function Splash({navigation}) {
             setTimeout(() => {
                 // navigation.navigate('Authentication')
                 navigation.navigate('Home')
-            }, 2000);
+            }, 1);
         }
     }
     verifyUser()

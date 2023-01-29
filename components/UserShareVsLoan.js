@@ -3,22 +3,26 @@ import { DonutChart } from "react-native-circular-chart";
 import { RadialGradient } from "react-native-svg";
 
 
-export default function CircGraph(){
+export default function CircGraph({DATA}){
     
     const styles = StyleSheet.create({
         sectionWrapper: {
+            width: '95%',
+            display: "flex",
+            flexDirection: 'row',
             justifyContent: "center",
             alignItems: "center",
             borderWidth: 1,
             borderRadius: 8,
             borderColor: "lightgray",
             backgroundColor: "#ffffff",
-            marginVertical: 8,
+            // marginVertical: 8,
+            margin: 8,
 
             shadowColor: "#000",
             shadowOffset: {
-            width: 0,
-            height: 1,
+                width: 1,
+                height: 1,
             },
             shadowOpacity: 0.2,
             shadowRadius: 1.41,
@@ -29,20 +33,14 @@ export default function CircGraph(){
     let mapKeyColor = {
         width: 10, height: 10,backgroundColor: "#85B1FF"
     }
-    let val = 0
-    let DATA = [
-        {name: "Shares", value: 5000, color: "#85B1FF"},
-        {name: "Loans", value: (val === 0 ? val + 1 : val) * 2, color: val === 0 ? "#85B1FF" : "gray"}
-
-    ]
     return (
         <View style={styles.sectionWrapper}>
             <DonutChart
                 data={DATA}
-                strokeWidth={15}
-                radius={90}
-                containerWidth={300 - 2 * 2}
-                containerHeight={105 * 2}
+                strokeWidth={10}
+                radius={60}
+                containerWidth={250 - 2 * 2}
+                containerHeight={150}
                 type="round"
                 startAngle={0}
                 endAngle={360}
