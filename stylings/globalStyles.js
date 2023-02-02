@@ -14,11 +14,10 @@ export const glob = StyleSheet.create({
         textAlign: 'left'
     },
     button1: {
-        width: 10
+        
     },
     button2: {
         color: "gray",
-        margin: 5,
     },
     linkBtn1Props: {
         color: "#fff",
@@ -35,8 +34,10 @@ export const glob = StyleSheet.create({
     input1: {
         width: 300,
         height: 40,
+        minHeight: 40,
         borderRadius: 1,
         margin: 4,
+        marginVertical: 5,
         borderBottomColor: "#005DFF",
         borderBottomWidth: 0.5
     },
@@ -53,6 +54,13 @@ export const glob = StyleSheet.create({
         }
     },
     spinner: {
-        color: "#005DFF"
+        color: "#005DFF",
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        parent: {
+            position: 'absolute',
+            top: '30%'
+        }
     },
 })

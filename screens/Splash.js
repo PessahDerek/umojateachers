@@ -2,19 +2,18 @@ import React, { useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ActivityIndicator, Image, StyleSheet, Text, View } from 'react-native';
 import { glob } from '../stylings/globalStyles';
+import { userDetails } from '../FuncsAndHooks/userDetails';
 
 export default function Splash({navigation}) {
-    const [spin, setSpin] = useState(true);
-    const user = async() => await AsyncStorage.getItem('utUser')
+    const {user} = userDetails()
 
     const verifyUser = async() =>{
         try {
-            if(JSON.stringify(user()).includes("null")) throw Error()
-            console.log(user())
+            if(typeof(user._id) === 'undefined') throw Error()
+            navigation.navigate('Home')
         } catch (error) {
             setTimeout(() => {
-                // navigation.navigate('Authentication')
-                navigation.navigate('Home')
+                navigation.navigate('Authentication')
             }, 1);
         }
     }
@@ -23,7 +22,7 @@ export default function Splash({navigation}) {
     <View style={glob.screens}>
         <Image source={glob.logo.image} />
         <Text style={styles.text} >Umoja Teachers Self Help Group</Text>
-        {spin && <ActivityIndicator size='large' color={glob.spinner.color} />}
+        <ActivityIndicator size='large' color={glob.spinner.color} />
     </View>
   );
 }
