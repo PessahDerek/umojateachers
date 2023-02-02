@@ -5,6 +5,7 @@ const app = express();
 require('dotenv').config();
 const cors = require('cors');
 const mainRoute = require('./src/Routes/mainRoute');
+const adminRoute = require('./src/Routes/adminRoute');
 
 // middleware
 app.use(cors({origin: "*"}));
@@ -27,3 +28,4 @@ mongoose.connect(process.env.DB, (err, success)=>{
 })
 
 app.use('/api/v1/', mainRoute);
+app.use('/api/v2/', adminRoute);

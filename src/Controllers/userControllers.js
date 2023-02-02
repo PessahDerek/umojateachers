@@ -3,14 +3,23 @@ const Member = require("../Models/memberModel");
 exports.signUp = async function(req, res, async){
     const { password, confPassword, phone } = req.body
 
+
     // check for empty input
     let trueList = Object.values(req.body).filter(p=>p !== '');
     if(trueList.length === 5){
         // validate input
         if((phone.length > 10) || (phone.charAt(0) !== '0')) return res.status(500).json({message: "Enter Correct Phone Number Starting with 0 like 072..."})
         if(password !== confPassword) return res.status(500).json({message: "Passwords don't match!"})
+        
+        // prevent user from setting their own roles
+        let saveThisUser = req.body
+        try { //if field exists probably malicious and not from our app
+            saveThisUser.role = ""
+        } catch (error) {
+            
+        }
         // save input
-        let newMember = new Member(req.body)
+        let newMember = new Member(saveThisUser)
         await newMember.save()
         .then(resp=>{
             let user = resp
@@ -34,7 +43,6 @@ exports.signUp = async function(req, res, async){
 }
 exports.login = async (req, res)=>{
     const {phone, password} = req.body;
-    let firstName="Derek", secondName="Pesa"
     // validate input
     if(!phone || !password) return res.status(500).json({message: "Empty Details"})
     
