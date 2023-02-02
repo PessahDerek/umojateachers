@@ -1,3 +1,4 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Alert, Button, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
@@ -7,7 +8,7 @@ import { glob } from "../stylings/globalStyles";
 import NoActionAlert from "./NoActionAlert";
 
 export default function AuthForm({navigation, login, setLogin, setSpin}){
-    const {setUser} = userDetails()
+    // const {setUser} = userDetails()
     const [member, setMember] = useState({
         firstName: "",
         secondName: "",
@@ -21,13 +22,18 @@ export default function AuthForm({navigation, login, setLogin, setSpin}){
         console.log(login)
         let path = login ? '/login':'/signup'
         await request.post(path, member)
-        .then(res=>{
+        .then(async(res)=>{
             setSpin(false);
             NoActionAlert("Successful", res.data.message )
-            setUser(res.data.user)
-            setTimeout(()=>{
-                navigation.navigate("Home")
-            }, 1500)
+            await AsyncStorage.setItem('utUser', JSON.stringify(res.data.user))
+            .then(()=>{
+                setTimeout(()=>{
+                    navigation.navigate("Home")
+                }, 1500)
+            })
+            .catch(err=>{
+                NoActionAlert("Error, contact support")
+            })
         })
         .catch(({response})=>{
             console.log(response.data)

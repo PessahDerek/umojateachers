@@ -2,22 +2,23 @@ import React, { useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ActivityIndicator, Image, StyleSheet, Text, View } from 'react-native';
 import { glob } from '../stylings/globalStyles';
-import { userDetails } from '../FuncsAndHooks/userDetails';
+import { getUserDet } from '../FuncsAndHooks/userDetails';
 
 export default function Splash({navigation}) {
-    const {user} = userDetails()
 
     const verifyUser = async() =>{
-        try {
-            if(typeof(user._id) === 'undefined') throw Error()
-            navigation.navigate('Home')
-        } catch (error) {
-            setTimeout(() => {
-                navigation.navigate('Authentication')
-            }, 1);
-        }
+        await AsyncStorage.getItem('utUser')
+        .then(user=>{
+            if(user !== null) return navigation.navigate('Home');
+            navigation.navigate('Authentication');
+        })
     }
-    verifyUser()
+    
+    useEffect(()=>{
+        verifyUser()
+    }, [])
+
+    
   return (
     <View style={glob.screens}>
         <Image source={glob.logo.image} />
