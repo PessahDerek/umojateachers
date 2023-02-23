@@ -1,4 +1,4 @@
-const Member = require("../Models/memberModel");
+const Members = require("../Models/memberModel");
 
 exports.signUp = async function(req, res, async){
     const { password, confPassword, phone } = req.body
@@ -19,7 +19,7 @@ exports.signUp = async function(req, res, async){
             
         }
         // save input
-        let newMember = new Member(saveThisUser)
+        let newMember = new Members(saveThisUser)
         await newMember.save()
         .then(resp=>{
             let user = resp
@@ -41,12 +41,13 @@ exports.signUp = async function(req, res, async){
         message: "Fill Every Detail"
     })
 }
+
 exports.login = async (req, res)=>{
     const {phone, password} = req.body;
     // validate input
-    if(!phone || !password) return res.status(500).json({message: "Empty Details"})
+    if(!phone || !password) return res.status(400).json({message: "Empty Details"})
     
-    let member = await Member.find({$and: [{phone: phone, password: password}]})
+    let member = await Members.find({$and: [{phone: phone, password: password}]})
     
     let isMem = member.length > 0
     res.status(isMem ? 200 : 404).json({
@@ -55,3 +56,12 @@ exports.login = async (req, res)=>{
     })
 }
 
+exports.getAllShares = async(req, res) =>{
+    let shares = await Members.find({}).select('-password -phone');
+    res.status(200).json(shares);
+}
+
+exports.getLoanShares = async(req, res) => {
+    let sharesNloans = await Members.findById(req.headers.userid).select('shares loans');
+    res.status(200).json(sharesNloans);
+}

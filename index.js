@@ -22,7 +22,7 @@ app.listen(process.env.PORT, (err, success)=>{
 
 mongoose.connect(process.env.DB, (err, success)=>{
     if(err){
-        return console.log("DB connection failed...");
+        return console.log("DB connection failed...", err.message);
     }
     console.log("DB connected...");
 })
