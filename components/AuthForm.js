@@ -3,7 +3,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Alert, Button, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { request } from "../FuncsAndHooks/axios";
-import { userDetails } from "../FuncsAndHooks/userDetails";
 import { glob } from "../stylings/globalStyles";
 import NoActionAlert from "./NoActionAlert";
 

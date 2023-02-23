@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ActivityIndicator, Image, StyleSheet, Text, View } from 'react-native';
 import { glob } from '../stylings/globalStyles';
-import { getUserDet } from '../FuncsAndHooks/userDetails';
 
 export default function Splash({navigation}) {
-
     const verifyUser = async() =>{
         await AsyncStorage.getItem('utUser')
         .then(user=>{

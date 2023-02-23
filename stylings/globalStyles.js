@@ -41,6 +41,15 @@ export const glob = StyleSheet.create({
         borderBottomColor: "#005DFF",
         borderBottomWidth: 0.5
     },
+    input2: {
+        width: "60%",
+        height: 40,
+        color: "black",
+        fontSize: 18,
+        borderBottomColor: "#005DFF",
+        borderBottomWidth: 0.5,
+        marginBottom: 10
+    },
     statusbar: {
         backgroundColor: "rgb(255, 255, 255)"
     },

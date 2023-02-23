@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import { DonutChart } from "react-native-circular-chart";
 import { RadialGradient } from "react-native-svg";
+import Spinner from "./Spinner";
 
 
 export default function CircGraph({DATA}){
@@ -8,6 +9,7 @@ export default function CircGraph({DATA}){
     const styles = StyleSheet.create({
         sectionWrapper: {
             width: '95%',
+            minHeight: 100,
             display: "flex",
             flexDirection: 'row',
             justifyContent: "center",
@@ -35,20 +37,20 @@ export default function CircGraph({DATA}){
     }
     return (
         <View style={styles.sectionWrapper}>
-            <DonutChart
-                data={DATA}
-                strokeWidth={10}
-                radius={60}
-                containerWidth={250 - 2 * 2}
-                containerHeight={150}
-                type="round"
-                startAngle={0}
-                endAngle={360}
-                animationType="slide"
-                disabled 
-            />
-            <Text>Shares<View style={mapKeyColor}></View></Text>
-            <Text>Loans<View style={mapKeyColor}></View></Text>
+                <DonutChart
+                    data={DATA}
+                    strokeWidth={10}
+                    radius={60}
+                    containerWidth={250 - 2 * 2}
+                    containerHeight={150}
+                    type="round"
+                    startAngle={0}
+                    endAngle={360}
+                    animationType="slide"
+                    disabled 
+                />
+                <Text>Shares<View style={mapKeyColor}></View></Text>
+                <Text>Loans<View style={mapKeyColor}></View></Text>
         </View>
     )
 
