@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { Alert, ScrollView, StyleSheet, Text, View } from "react-native";
+import Banner from "../components/Banner";
 import Btn1 from "../components/Btn1";
-import Pie from "../components/Pie";
-import CircGraph from "../components/UserShareVsLoan";
 import { request } from "../FuncsAndHooks/axios";
 import { getUserNsend } from "../FuncsAndHooks/getUserNsend";
 import { glob } from "../stylings/globalStyles";
@@ -39,9 +38,7 @@ export default function Home({navigation}){
     return(
         <View style={glob.screens} >
             <ScrollView style={styles.scrollView}>
-                <CircGraph DATA={DATA} />
-                <CircGraph DATA={DATA} />
-                <Pie />
+                <Banner />
                 {isAdmin && 
                 <View style={styles.btnPack}>
                     <Btn1 text={"Give Loan"} navigation={navigation} screen={""} />
