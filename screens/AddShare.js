@@ -42,6 +42,7 @@ export default function AddShare(){
             let admin = await getUserNsend()
             getMembers(admin)
         }
+        console.log('infinity is addshare.js')
         fetchUsers()
     }, [])
 

@@ -1,7 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { Alert, Button, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { useState } from "react";
+import { Button, StyleSheet, TextInput, View } from "react-native";
 import { request } from "../FuncsAndHooks/axios";
 import { glob } from "../stylings/globalStyles";
 import NoActionAlert from "./NoActionAlert";

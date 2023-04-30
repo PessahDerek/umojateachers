@@ -13,6 +13,7 @@ export default function Splash({navigation}) {
     }
     
     useEffect(()=>{
+        console.log('infinity is splash.js')
         verifyUser()
     }, [])
 

@@ -15,9 +15,10 @@ export default function ListMembers({member}){
     const inputRef = useRef(null)
     const [edit, setEdit] = useState(false)
     const [spin, setSpin] = useState(false)
+    
     useEffect(()=>{
         setMember(member)
-    }, [member])
+    }, [])
 
     const postchange = async(admin) =>{
         setSpin(true)
