@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-let basePath = "https://20ac-154-122-25-64.in.ngrok.io"
+let basePath = " https://ada5-197-156-137-163.ngrok-free.app"
 
 export const request = axios.create({
     baseURL: `${basePath}/api/v1`
