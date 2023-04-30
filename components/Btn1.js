@@ -5,11 +5,12 @@ export default function Btn1({text, screen, navigation}){
 
     const styles = StyleSheet.create({
         btn1: {
-            width: '50%',
-            height: 150,
-            borderRadius: 10,
-            // display: 'flex',
-            // backgroundColor: 'green',
+            width: "48%",
+            flexGrow: 0,
+            margin: 1,
+            marginBottom: 6,
+            height: 120,
+            borderRadius: 0,
         },
         text: {
             color: 'white',
@@ -18,12 +19,9 @@ export default function Btn1({text, screen, navigation}){
             textAlign: 'center',
         },
         grad: {
-            width: 150,
+            width: '100%',
             height: 150,
-            paddingHorizontal: 40,
-            paddingVertical: 10,
-            borderRadius: 10,
-            margin: 20,
+            borderRadius: 0,
             flex: 1,
             justifyContent: 'center',
         }
@@ -38,7 +36,8 @@ export default function Btn1({text, screen, navigation}){
                 style={styles.grad}
                 start={{ x: 0, y: 0 }}
                 end={{x: 1, y: 1 }}
-                colors={['#A197FF', '#85B1FF']}
+                colors={['#68B9FF', '#1794FF']}
+                // colors={["#68B9FF", "#68B9FF"]}
             >
                 <Text style={styles.text}>{text}</Text>
             </LinearGradient>

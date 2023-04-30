@@ -13,8 +13,21 @@ export const glob = StyleSheet.create({
         fontWeight: "bold",
         textAlign: 'left'
     },
-    button1: {
-        
+    h2: {
+        fontSize: 22,
+        fontWeight: "bold",
+        textAlign: 'left'
+    },
+    scrollView: {
+        flex: 1,
+        width: "90%",
+    },
+    btnStyle1: {
+        width: '95%',
+        borderRadius: 10,
+        margin: 6,
+        height: 45,
+        backgroundColor: '#1794FF'
     },
     button2: {
         color: "gray",
