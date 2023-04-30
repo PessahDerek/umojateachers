@@ -62,6 +62,9 @@ exports.getAllShares = async(req, res) =>{
 }
 
 exports.getLoanShares = async(req, res) => {
-    let sharesNloans = await Members.findById(req.headers.userid).select('shares loans');
+    let sharesNloans = await Members.findById(req.headers.userid).select('shares loans installments');
+    if(sharesNloans === null)return res.json(404).json({
+        message: "Try Logging in!"
+    })
     res.status(200).json(sharesNloans);
 }

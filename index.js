@@ -1,3 +1,7 @@
+const {handleServerError} = require('./src/Errors/Errors')
+process.on('uncaughtException', handleServerError)
+
+
 const express = require('express');
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', false)

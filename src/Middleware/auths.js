@@ -12,21 +12,19 @@ exports.isMember = async(req, res, next)=>{
 
 
 exports.isAdmin = async(req, res, next)=>{
-    console.log('req.headers: ', req.headers)
     let user = await Member.findById(req.headers.userid);
     if(user === null){
-        res.status(404).json({
+        return res.status(404).json({
             status: 'failed',
             message: "Signup or sign in"
         })
-        return
     }
     if(user.role !== 'admin'){
-        res.status(401).json({
+        return res.status(401).json({
             status: 'failed',
             message: "You do not have permission for this action"
         })
-        return
     }
+    console.log("here...")
     next();
 }
